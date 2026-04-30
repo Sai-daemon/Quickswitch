@@ -1,0 +1,81 @@
+<!--This file was generated with the assistance of DeepSeek AI (DeepSeek-V4).
+ The code is published under the MIT License. All licensing responsibilities
+ and copyright for this specific file are held by SAI-DAEMON, 2026. -->
+
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QuickSwitch</RootNamespace>
+    <AssemblyName>QuickSwitch</AssemblyName>
+    <TargetFrameworkVersion>v4.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+
+  <!-- KSP_DIR env var must point to your KSP root, e.g.:
+       Linux:   export KSP_DIR="/path/to/Kerbal Space Program"
+       Windows: set KSP_DIR=C:\path\to\Kerbal Space Program         -->
+  <PropertyGroup>
+    <KSPDir Condition=" '$(KSP_DIR)' != '' ">$(KSP_DIR)</KSPDir>
+    <KSPDir Condition=" '$(KSP_DIR)' == '' ">$(KSPDIR)</KSPDir>
+    <FrameworkPathOverride>$(KSPDir)/KSP_Data/Managed</FrameworkPathOverride>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin/Debug/</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin/Release/</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(KSPDir)/KSP_Data/Managed/Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(KSPDir)/KSP_Data/Managed/UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(KSPDir)/KSP_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Properties/AssemblyInfo.cs" />
+    <Compile Include="QuickSwitchModule.cs" />
+  </ItemGroup>
+
+  <Target Name="InstallMod" AfterTargets="AfterCompile">
+    <Message Text="[InstallMod] Copying $(AssemblyName).dll to GameData/QuickSwitch/Plugins/" Importance="high" />
+    <MakeDir Directories="$(ProjectDir)../GameData/QuickSwitch/Plugins" />
+    <Copy SourceFiles="$(IntermediateOutputPath)$(AssemblyName).dll"
+          DestinationFolder="$(ProjectDir)../GameData/QuickSwitch/Plugins" />
+    <Copy SourceFiles="$(IntermediateOutputPath)$(AssemblyName).pdb"
+          DestinationFolder="$(ProjectDir)../GameData/QuickSwitch/Plugins"
+          Condition="Exists('$(IntermediateOutputPath)$(AssemblyName).pdb')" />
+  </Target>
+
+  <Import Project="$(MSBuildToolsPath)/Microsoft.CSharp.targets" />
+</Project>
