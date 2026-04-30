@@ -1,0 +1,25 @@
+    {
+        "spec_version"   : 1,
+        "name"           : "Quickswitch",
+        "abstract"       : "Switch between close vessels and kerbals with just your mouse",
+        "identifier"     : "Quickswitch",
+        "author"         : "SAI-DAEMON"
+        "download"       : "-to be filled in-",
+        "license"        : "MIT",
+        "version"        : "1.0",
+        "release_status" : "stable",
+        "ksp_version"    : "1.12.X",
+        "tags" : [
+            "convenience",
+            "control",
+        ],
+        "install" : [
+            {
+                "file"       : "GameData/QuickSwitch/",
+                "install_to" : "GameData"
+            }
+        ],
+        "depends" : [
+            { "name" : "ModuleManager" }
+        ],
+    }
