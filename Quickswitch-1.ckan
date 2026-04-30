@@ -12,6 +12,8 @@
         "tags" : [
             "convenience",
             "control",
+            "plugin",
+            "config",
         ],
         "install" : [
             {
