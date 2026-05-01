@@ -8,8 +8,8 @@ Version 1.0 of the mod. Will leave it up on Github for a preliminary release whi
 
 - Right-click any command pod, probe core, or Kerbal on EVA and press **"Switch To"** to instantly switch to that vessel
 - Works at any range (up to physics range which is ~2.3 km, but it can go up to 5km theoretically with a physics mod extender)
-- Zero configuration — install and it just works
-- No toolbar clutter — the button lives in the right-click menu
+- Zero configuration needed
+- No toolbar clutter as the button is in the right click menu
 - Works with your existing save files
 
 ## Requirements
@@ -26,7 +26,7 @@ Version 1.0 of the mod. Will leave it up on Github for a preliminary release whi
 1. Download the latest release. If you are downloading the pre-compiled .dll, skip to step 3. 
 2. If building from source, compile in your IDE of choice as per the instructions below. 
 3. Merge the `GameData` folder from the zip into your KSP `GameData` folder
-4. That's it — the Module Manager patch injects the module automatically
+4. That's it! the Module Manager patch injects the module automatically
 
 ## Building from Source
 
