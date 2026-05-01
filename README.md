@@ -11,7 +11,7 @@ Version 1.0 of the mod. Will leave it up on Github for a preliminary release whi
 - Zero configuration needed
 - No toolbar clutter as the button is in the right click menu
 - Works with your existing save files
-- Should work with any mod that uses @PART for their parts in their code
+- Should work with any mod that uses @ PART for their parts in their code
 
 ## Requirements
 
